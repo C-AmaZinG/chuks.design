@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Mail, PenTool } from "lucide-react";
 
 export default function Home() {
@@ -18,23 +19,16 @@ export default function Home() {
         padding: "2rem",
         overflow: "hidden",
       }}>
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
+        <Image 
+          src="/assets/workshop.png"
+          alt="Hero Background"
+          fill
+          priority
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
             objectFit: "cover",
             zIndex: 0,
           }}
-        >
-          <source src="/assets/hero_video.mp4" type="video/mp4" />
-        </video>
+        />
         <div style={{
           position: "absolute",
           top: 0,
@@ -71,8 +65,8 @@ export default function Home() {
                 background: "#000",
                 color: "#fff",
                 border: "2px solid var(--accent)",
-                padding: "1rem 2.5rem",
-                fontSize: "1.1rem",
+                padding: "0.8rem 2.5rem",
+                fontSize: "1rem",
                 fontWeight: 600,
                 borderRadius: "50px",
                 cursor: "pointer",
@@ -92,7 +86,7 @@ export default function Home() {
 
           {/* Top right links */}
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            <a href="mailto:hello@example.com" className="text-accent hover-accent" style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "1.1rem", fontWeight: 500 }}>
+            <a href="mailto:wilson14.ca@gmail.com" className="text-accent hover-accent" style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "1.1rem", fontWeight: 500 }}>
               <Mail size={20} /> Email
             </a>
             <a href="https://www.linkedin.com/in/chukwudi-ananti/" target="_blank" rel="noopener noreferrer" className="text-accent hover-accent" style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "1.1rem", fontWeight: 500 }}>
@@ -209,27 +203,29 @@ export default function Home() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(450px, 1fr))", gap: "2.5rem" }}>
             {/* Case Study 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              style={{ overflow: "hidden", cursor: "pointer", display: "flex", flexDirection: "column", backgroundColor: "#222", borderBottom: "3px solid var(--accent)" }}
-            >
-              <div style={{ position: "relative", width: "100%", height: "350px", backgroundColor: "#000" }}>
-                <Image 
-                  src="/assets/crimiq.png" 
-                  alt="CRIMIQ Dashboard" 
-                  fill 
-                  style={{ objectFit: "cover", opacity: 0.9 }} 
-                />
-              </div>
-              <div style={{ padding: "2.5rem" }}>
-                <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem", fontWeight: 600, color: "#fff" }}>Driving Adoption & Growth in a Multi-Stakeholder Justice System</h3>
-                <p className="text-muted" style={{ fontSize: "1rem", lineHeight: 1.6 }}>The goal was to make their bold mission in cybersecurity feel accessible and actionable.</p>
-              </div>
-            </motion.div>
+            <Link href="/crimiq" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ y: -10 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                style={{ overflow: "hidden", cursor: "pointer", display: "flex", flexDirection: "column", backgroundColor: "#222", borderBottom: "3px solid var(--accent)", height: "100%" }}
+              >
+                <div style={{ position: "relative", width: "100%", height: "350px", backgroundColor: "#000" }}>
+                  <Image 
+                    src="/assets/crimiq.png" 
+                    alt="CRIMIQ Dashboard" 
+                    fill 
+                    style={{ objectFit: "cover", opacity: 0.9 }} 
+                  />
+                </div>
+                <div style={{ padding: "2.5rem" }}>
+                  <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem", fontWeight: 600, color: "#fff" }}>Driving Adoption & Growth in a Multi-Stakeholder Justice System</h3>
+                  <p className="text-muted" style={{ fontSize: "1rem", lineHeight: 1.6 }}>The goal was to make their bold mission in cybersecurity feel accessible and actionable.</p>
+                </div>
+              </motion.div>
+            </Link>
 
             {/* Case Study 2 */}
             <motion.div 
@@ -284,7 +280,7 @@ export default function Home() {
             transition={{ delay: 0.3 }}
             style={{ display: "flex", justifyContent: "center", gap: "3rem", marginBottom: "4rem", flexWrap: "wrap" }}
           >
-            <a href="mailto:hello@example.com" style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "1.25rem" }} className="hover-accent">
+            <a href="mailto:wilson14.ca@gmail.com" style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "1.25rem" }} className="hover-accent">
               <Mail size={24} /> Email
             </a>
             <a href="https://www.linkedin.com/in/chukwudi-ananti/" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "1.25rem" }} className="hover-accent">
@@ -302,26 +298,21 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             style={{
-              background: "transparent",
-              color: "var(--text-main)",
+              background: "#000",
+              color: "#fff",
               border: "2px solid var(--accent)",
-              padding: "1.25rem 3.5rem",
-              fontSize: "1.25rem",
+              padding: "0.8rem 2.5rem",
+              fontSize: "1rem",
               fontWeight: 600,
               borderRadius: "50px",
               cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "center",
               transition: "all 0.3s ease",
-              boxShadow: "0 0 20px rgba(212, 255, 0, 0.05)"
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(212, 255, 0, 0.1)';
-              e.currentTarget.style.boxShadow = "0 0 30px rgba(212, 255, 0, 0.2)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.boxShadow = "0 0 20px rgba(212, 255, 0, 0.05)";
+              e.currentTarget.style.background = '#000';
             }}
           >
             View Resume
