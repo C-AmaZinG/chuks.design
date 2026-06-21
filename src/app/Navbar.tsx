@@ -1,76 +1,88 @@
 "use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { Ellipsis, X } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/#about-section", label: "About Me" },
+  { href: "/#services-section", label: "Services" },
+  { href: "/#testimonials-section", label: "Testimonials" },
+  { href: "/projects", label: "Works" },
+  { href: "/#contact-section", label: "Contact" },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 50,
-      transition: "all 0.3s ease",
-      backgroundColor: scrolled ? "rgba(13, 15, 18, 0.9)" : "transparent",
-      backdropFilter: scrolled ? "blur(10px)" : "none",
-      borderBottom: scrolled ? "1px solid rgba(255, 255, 255, 0.05)" : "none",
-      padding: scrolled ? "1rem 0" : "1.5rem 0",
-    }}>
-      <div className="container" style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        margin: "0 auto",
-        padding: "0 20px"
-      }}>
-        <Link href="/" style={{
-          color: "#ffffff",
-          fontWeight: 500,
-          fontSize: "0.95rem",
-          textDecoration: "none",
-          transition: "color 0.3s ease"
+    <header className="site-nav-wrap">
+      <motion.nav
+        className={menuOpen ? "site-nav menu-open" : "site-nav"}
+        aria-label="Primary"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          borderRadius: 20,
+          height: menuOpen ? "auto" : 60,
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'var(--accent)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = '#ffffff';
-        }}
-        >
-          Chuks.Design
-        </Link>
-        
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "2.5rem",
-          fontSize: "0.95rem",
-          color: "var(--text-muted)",
-        }}>
-          <Link href="/#projects" className="nav-link" style={{ textDecoration: "none", color: "inherit", transition: "color 0.3s ease" }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-          >Projects</Link>
-          <Link href="/about" className="nav-link" style={{ textDecoration: "none", color: "inherit", transition: "color 0.3s ease" }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-          >About</Link>
-          <Link href="/contact" className="nav-link" style={{ textDecoration: "none", color: "inherit", transition: "color 0.3s ease" }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-          >Contact</Link>
+        transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="site-nav-top">
+          <Link href="/" className="brand-link" onClick={() => setMenuOpen(false)}>
+            Chuks
+          </Link>
+
+          <button
+            type="button"
+            className="menu-toggle"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-expanded={menuOpen}
+            aria-label="Toggle navigation"
+          >
+            {menuOpen ? <X size={20} strokeWidth={2.4} /> : <Ellipsis size={22} strokeWidth={2.6} />}
+          </button>
         </div>
-      </div>
-    </nav>
+
+        <AnimatePresence>
+          {menuOpen ? (
+            <motion.div
+              className="nav-pop-links"
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={{
+                open: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.055, delayChildren: 0.08 },
+                },
+                closed: {
+                  opacity: 0,
+                  transition: { duration: 0.15 },
+                },
+              }}
+            >
+              {links.map((link) => (
+                <motion.div
+                  key={link.label}
+                  variants={{
+                    open: { opacity: 1, y: 0 },
+                    closed: { opacity: 0, y: 10 },
+                  }}
+                  transition={{ duration: 0.24 }}
+                >
+                  <Link href={link.href} onClick={() => setMenuOpen(false)}>
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </motion.nav>
+    </header>
   );
 }

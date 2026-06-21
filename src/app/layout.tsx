@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Chuks | Product Designer",
-  description: "Versatile Growth-focused Product Designer portfolio.",
+  title: "Chuks.Design | Growth Designer & Creative Director",
+  description:
+    "Portfolio of Chukwudi Ananti, a growth designer and creative director crafting digital products, brand systems, and conversion-driven interfaces.",
 };
 
 export default function RootLayout({
@@ -24,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={archivo.variable}>
       <body>
         <Navbar />
         {children}
