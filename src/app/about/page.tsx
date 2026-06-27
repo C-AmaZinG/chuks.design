@@ -35,18 +35,18 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", margin: "0 0 4rem" }}>
-                I'm a Growth-focused Product Designer with experience turning ideas into digital products. I work closely with founders, marketing teams, and developers to create interfaces that scale — from brand strategy to launch-ready SaaS products.
+                I&apos;m Chukwudi Ananti, a growth designer and creative director with experience turning ideas into digital products. I work closely with founders, marketing teams, and developers to create interfaces that scale, from brand strategy to launch-ready SaaS products.
               </h1>
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem" }}>
                 <div>
                   <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.6, margin: 0 }}>
-                    I got my start freelancing for early-stage startups while refining my product design skills. My first big break came working with innovative tech companies, where I learned the importance of aligning design decisions with core business metrics. Since then, I've dedicated my career to crafting human-centered digital experiences.
+                    I got my start freelancing for early-stage startups while refining my product design skills. My first big break came working with innovative tech companies, where I learned the importance of aligning design decisions with core business metrics. Since then, I&apos;ve dedicated my career to crafting human-centered digital experiences.
                   </p>
                 </div>
                 <div>
                   <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.6, margin: 0 }}>
-                    Most of my work sits at the intersection of growth and product design. Whether it's designing complex enterprise dashboards that drive user adoption or crafting landing pages that convert, my goal is always to deliver measurable results. I believe that the best products are those that seamlessly integrate into the user's daily workflow.
+                    Most of my work sits at the intersection of growth and product design. Whether it&apos;s designing complex enterprise dashboards that drive user adoption or crafting landing pages that convert, my goal is always to deliver measurable results. I believe that the best products are those that seamlessly integrate into the user&apos;s daily workflow.
                   </p>
                 </div>
               </div>

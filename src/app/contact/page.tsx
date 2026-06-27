@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 
 export default function ContactPage() {
+  const contactEmail = "wilson14.ca@gmail.com";
+
   return (
     <main style={{ minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: "120px", paddingBottom: "120px" }}>
       <div className="container" style={{ width: "100%" }}>
@@ -29,10 +31,14 @@ export default function ContactPage() {
             >
               <h2 style={{ fontSize: "1.75rem", fontWeight: 600, marginBottom: "3rem", lineHeight: 1.3 }}>
                 Tell me about your idea.<br />
-                I'll take it from there.
+                I&apos;ll take it from there.
               </h2>
 
-              <form style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "4rem" }}>
+              <a href={`mailto:${contactEmail}`} className="hover-accent" style={{ display: "inline-flex", marginBottom: "2rem", color: "var(--text-primary)", fontSize: "1.1rem", fontWeight: 600 }}>
+                {contactEmail}
+              </a>
+
+              <form action={`mailto:${contactEmail}`} method="post" encType="text/plain" style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "4rem" }}>
                 <div>
                   <label className="contact-label">Your name</label>
                   <input type="text" className="contact-input" />
