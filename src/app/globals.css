@@ -277,14 +277,15 @@ a {
   color: var(--accent);
   transform: translateX(3px);
 }
-
-.inline-link svg {
-  border: 1px solid #222;
-  border-radius: 8px;
-  padding: 2px;
-}
-
+
+.inline-link svg {
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 2px;
+}
+
 .quote-v2 {
+  position: relative;
   min-height: 240svh;
   padding: 0;
   text-align: center;
