@@ -4,6 +4,7 @@ import { motion, type MotionValue, useScroll, useTransform } from "framer-motion
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
+import { getAllProjects } from "@/data/projects";
 
 const services = [
   {
@@ -24,36 +25,7 @@ const services = [
   },
 ];
 
-const projects = [
-  {
-    title: "Damas",
-    subtitle: "Agency Framer Template",
-    image:
-      "https://framerusercontent.com/images/VNXQLcPHw9VbVzy6BDpZ8pUsaU.png?width=1160&height=800",
-    href: "https://framer.link/Bl9cmkE",
-  },
-  {
-    title: "Najm",
-    subtitle: "SaaS Framer Template",
-    image:
-      "https://framerusercontent.com/images/e3DxUGJWqt7CIVVQIA0VZoy09FQ.png?width=1160&height=800",
-    href: "https://framer.link/jU3v2q9",
-  },
-  {
-    title: "Kivo",
-    subtitle: "SaaS Framer Template",
-    image:
-      "https://framerusercontent.com/images/WgEHVRrQs62rgxlzrnXJJ8rr4.png?width=1160&height=800",
-    href: "https://framer.link/pzlCFvH",
-  },
-  {
-    title: "Adorn",
-    subtitle: "Studio Framer Template",
-    image:
-      "https://framerusercontent.com/images/I3azeVtkvdKBGl9TX38tUdXEb0.png?width=1160&height=800",
-    href: "https://framer.link/C3r2Pme",
-  },
-];
+const projects = getAllProjects();
 
 const testimonials = [
   {
@@ -189,7 +161,7 @@ export default function Home() {
 
         <motion.div className="hero-v2-meta" variants={itemReveal}>
           <span>©2026</span>
-          <span>/CREATING SINCE 2020</span>
+          <span>/CREATING SINCE 2016</span>
         </motion.div>
       </motion.section>
 
@@ -274,7 +246,7 @@ export default function Home() {
         viewport={revealViewport}
         variants={staggerReveal}
       >
-        <motion.h2 variants={itemReveal}>Services</motion.h2>
+        <motion.h2 variants={itemReveal}>Services & Skills</motion.h2>
         <div className="services-v2-list">
           {services.map((service) => (
             <motion.article key={service.title} className="services-v2-row" variants={itemReveal}>
@@ -307,7 +279,7 @@ export default function Home() {
           {projects.map((project) => (
             <motion.a
               key={project.title}
-              href={project.href}
+              href={`/projects/${project.slug}`}
               className="project-v2-card"
               variants={itemReveal}
               whileHover={{ y: -8 }}
@@ -315,7 +287,7 @@ export default function Home() {
             >
               <div className="project-v2-image-wrap">
                 <Image
-                  src={project.image}
+                  src={project.heroImage}
                   alt={project.title}
                   fill
                   sizes="(max-width: 1120px) 100vw, 50vw"
@@ -481,7 +453,7 @@ export default function Home() {
             <div className="footer-v2-links">
               <a href="#hero-section">Home</a>
               <a href="#about-section">About Me</a>
-              <a href="#services-section">Services</a>
+              <a href="#services-section">Services & Skills</a>
               <a href="#testimonials-section">Testimonials</a>
               <a href="/projects">Works</a>
               <a href="#contact-section">Contact</a>

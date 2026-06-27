@@ -4,48 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const projects = [
-  {
-    title: "Damas",
-    subtitle: "Agency Framer Template",
-    image:
-      "https://framerusercontent.com/images/VNXQLcPHw9VbVzy6BDpZ8pUsaU.png?width=1160&height=800",
-    href: "https://framer.link/Bl9cmkE",
-  },
-  {
-    title: "Najm",
-    subtitle: "SaaS Framer Template",
-    image:
-      "https://framerusercontent.com/images/e3DxUGJWqt7CIVVQIA0VZoy09FQ.png?width=1160&height=800",
-    href: "https://framer.link/jU3v2q9",
-  },
-  {
-    title: "Kavi",
-    subtitle: "AI Framer Template",
-    image:
-      "https://framerusercontent.com/images/WgEHVRrQs62rgxlzrnXJJ8rr4.png?width=1160&height=800",
-    href: "https://framer.link/pzlCFvH",
-  },
-  {
-    title: "Sham",
-    subtitle: "Studio Framer Template",
-    image:
-      "https://framerusercontent.com/images/I3azeVtkvdKBGl9TX38tUdXEb0.png?width=1160&height=800",
-    href: "https://framer.link/C3r2Pme",
-  },
-  {
-    title: "Abjad",
-    subtitle: "AI Framer Template",
-    image: "https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png",
-    href: "https://framer.link/Bl9cmkE",
-  },
-  {
-    title: "Faseelh",
-    subtitle: "Environmental Framer Template",
-    image: "https://framerusercontent.com/images/ue9IClg37SpZ5YcBTAPeavvDUNo.png",
-    href: "https://framer.link/Bl9cmkE",
-  },
-];
+import { getAllProjects } from "@/data/projects";
+
+const projects = getAllProjects();
 
 const contactEmail = "wilson14.ca@gmail.com";
 
@@ -103,7 +64,7 @@ export default function ProjectsPage() {
         {projects.map((project) => (
           <motion.a
             key={project.title}
-            href={project.href}
+            href={`/projects/${project.slug}`}
             className="project-v2-card"
             variants={itemReveal}
             whileHover={{ y: -8 }}
@@ -111,7 +72,7 @@ export default function ProjectsPage() {
           >
             <div className="project-v2-image-wrap">
               <Image
-                src={project.image}
+                src={project.heroImage}
                 alt={project.title}
                 fill
                 sizes="(max-width: 1120px) 100vw, 50vw"
@@ -146,7 +107,7 @@ export default function ProjectsPage() {
             <div className="footer-v2-links">
               <Link href="/">Home</Link>
               <Link href="/#about-section">About Me</Link>
-              <Link href="/#services-section">Services</Link>
+              <Link href="/#services-section">Services & Skills</Link>
               <Link href="/projects">Works</Link>
               <Link href="/#contact-section">Contact</Link>
             </div>
