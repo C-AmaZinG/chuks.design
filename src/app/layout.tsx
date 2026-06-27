@@ -36,7 +36,9 @@ export default function RootLayout({
           `}
         </Script>
         <Navbar />
-        {children}
+        <main className="layout-wrapper">
+          {children}
+        </main>
       </body>
     </html>
   );
