@@ -124,8 +124,11 @@ function QuoteWord({
 }) {
   // Finish animating early (at 75% of the scroll) so the full text is visible before leaving
   const ANIM_END = 0.75;
-  const start = (index / total) * ANIM_END;
-  const end = Math.min(ANIM_END, ((index + 3) / total) * ANIM_END);
+  const step = ANIM_END / total;
+  const start = index * step;
+  // Use a tight window for each word to create a crisp, distinct "word-by-word" effect
+  const end = start + step;
+  
   const color = useTransform(progress, [start, end], ["#d8d5cf", "#0f0f10"]);
   const opacity = useTransform(progress, [start, end], [0.35, 1]);
 
