@@ -122,8 +122,10 @@ function QuoteWord({
   total: number;
   word: string;
 }) {
-  const start = index / total;
-  const end = Math.min(1, (index + 3) / total);
+  // Finish animating early (at 75% of the scroll) so the full text is visible before leaving
+  const ANIM_END = 0.75;
+  const start = (index / total) * ANIM_END;
+  const end = Math.min(ANIM_END, ((index + 3) / total) * ANIM_END);
   const color = useTransform(progress, [start, end], ["#d8d5cf", "#0f0f10"]);
   const opacity = useTransform(progress, [start, end], [0.35, 1]);
 
